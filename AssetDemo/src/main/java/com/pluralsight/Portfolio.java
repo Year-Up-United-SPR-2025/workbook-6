@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class Portfolio {
     private String name;
     private String owner;
-    private ArrayList<FixedAsset> assets;
+    private ArrayList<Valuable> valuables;
 
     public Portfolio(String name, String owner) {
         this.name = name;
         this.owner = owner;
-        this.assets = new ArrayList<FixedAsset>();
+        this.valuables = new ArrayList<Valuable>();
     }
 
-    public void add(FixedAsset asset){
-        this.assets.add(asset);
+    public void add(Valuable valuableThing){
+        this.valuables.add(valuableThing);
     }
 
     public double getValue(){
         double total = 0;
-        for (FixedAsset fa : assets){
+        for (Valuable fa : valuables){
             total += fa.getValue();
         }
         return total;
