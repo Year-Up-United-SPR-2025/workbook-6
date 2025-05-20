@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        // Step 1: Create a list of 10 people
+        // Step 1: Create a list of 10 people from ChatGPT
         List<Person> people = new ArrayList<>();
         people.add(new Person("Liam", "Smith", 25));
         people.add(new Person("Emma", "Johnson", 30));
