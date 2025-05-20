@@ -1,13 +1,12 @@
 package com.pluralsight.streams;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        // Step 1: Create a list of 10 people from ChatGPT
+        // Step 1: Create a list of 10 people
         List<Person> people = new ArrayList<>();
         people.add(new Person("Liam", "Smith", 25));
         people.add(new Person("Emma", "Johnson", 30));
@@ -25,22 +24,27 @@ public class Program {
         System.out.print("Enter a first or last name to search up a person: ");
         String name = scanner.nextLine().trim().toLowerCase();
 
-        // Search for people whose first or last name matches the input
-        System.out.println("\nFound Match:");
-        boolean found = false;
+        // Step 2.5: Create a new list to store matched people
+        List<Person> matchedPeople = new ArrayList<>();
+
+        // Step 3: Use a for loop to find and collect matches
         for (Person p : people) {
             if (p.getFirstName().equalsIgnoreCase(name) || p.getLastName().equalsIgnoreCase(name)) {
-                System.out.println(p); // Print matching person
-                found = true;
+                matchedPeople.add(p);
             }
         }
 
-        // If no match was found, tell the user
-        if (!found) {
+        // Step 4: Display the names of people in the matched list
+        System.out.println("\nFound Match:");
+        if (matchedPeople.isEmpty()) {
             System.out.println("No matches found.");
+        } else {
+            for (Person p : matchedPeople) {
+                System.out.println(p.getFirstName() + " " + p.getLastName());
+            }
         }
 
-        // Step 3: Calculate average, max, and min ages
+        // Step 5: Calculate average, max, and min ages
         int totalAge = 0;
         int maxAge = Integer.MIN_VALUE;
         int minAge = Integer.MAX_VALUE;
@@ -52,10 +56,8 @@ public class Program {
             if (age < minAge) minAge = age; // Update min age
         }
 
-        // Calculate average age
+        // Step 6: Display age statistics
         double averageAge = (double) totalAge / people.size();
-
-        // Display age statistics
         System.out.printf("\nAverage Age: %.1f\n", averageAge);
         System.out.println("Oldest Age: " + maxAge);
         System.out.println("Youngest Age: " + minAge);
